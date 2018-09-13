@@ -21,6 +21,19 @@ img {
   display: block;
 }
 
+audio {
+  margin: auto;
+  display: block;
+}
+
 .bottom-buffer {
    padding-bottom: 100px;
+   align-items: auto;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 2%;
+  color: gold;
+  font-size: 400%;
 }

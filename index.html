@@ -21,139 +21,37 @@
             </div>
           </div>
           <div class="row">
+            <div class=col-lg-12>
+              <h1 class="header" id="WinWrestler">WWF WORD GUESS GAME</h1>
+            </div>
+          </div>
+          <div class="row">
             <div class=col-lg-2></div>
             <div class="col-lg-5 leftbox">
               <img src="assets/images/wwf_default_img.jpg" id="mainImage" alt="DefaultImg">
+              <br>
+              <audio controls id="autoplay">
+                <source src="" id="mainMusic" type="audio/mpeg">
+                  Your browser does not support the audio element.
+              </audio>
             </div>
             <div class="col-lg-5 rightbox">
               <p>Press any key to get started!</p>
+              <p>WIN STREAK</p>
+              <p id="wins">0</p>
               <p>CURRENT WORD</p>
               <p id="game"> </p>
               <p>NUMBER OF GUESSES REMAINING</p>
-              <p id="chancesremaining"></p>
+              <p id="chancesremaining">10</p>
               <p>LETTERS ALREADY GUESSED</p>
               <p id="myList">&nbsp;</p>
             </div>
             <div class=col-lg-2></div>
           </div>
       </div>
-
-
-    <script type="text/javascript">
-    var Wrestlers = ["The Undertaker","Kurt Angle", "Kane", "Stone Cold", "Shawn Michaels", "Randy Savage", "The Rock", "Booker T", "Triple H", "Chyna"];
-    var WrestlersImg = ["assets/images/tu.jpeg","assets/images/ka.jpeg","assets/images/k.jpeg","assets/images/sc.jpeg","assets/images/sm.jpeg","assets/images/rs.jpeg","assets/images/tr.jpeg","assets/images/bt.jpeg","assets/images/th.jpeg","assets/images/c.jpeg"]
-    var RandomWrestler = Math.floor(Math.random()*Wrestlers.length);
-    var SelectWrestler = Wrestlers[RandomWrestler];
-    var WrestlerWordLength = SelectWrestler.length;
-    var Display = [WrestlerWordLength];
-    var Win = WrestlerWordLength;
-    var lettersArray = SelectWrestler.split('');
-    var lettersWinArray = SelectWrestler.split('')
-    var Chances = 10
-    var Output = "";
-    var Alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
-    var lettersIncorrect = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' '];
-
-// Universe of letters to guess wrong
-    var index;
-    for (var i=0; i<lettersArray.length; i++) {
-        index = lettersIncorrect.indexOf(lettersArray[i]);
-        if (index > -1) {
-            lettersIncorrect.splice(index, 1);
-        }
-    }
-
-// Display chances
-  document.getElementById("chancesremaining").innerHTML = Chances;
-
-
-
-// Used to display word length
-  for (var i = 0; i < WrestlerWordLength; i++)
-  {
-    Display[i] = "_ ";
-    Output = Output + Display[i];
-  }
-  document.getElementById("game").innerHTML = Output;
-  Output = "";
-
-
-
-
-document.onkeyup = function(event) {
-  var userInput = event.key;
-
-// Used to display letters to users "hangman"
-  for (var g = 0; g < WrestlerWordLength; g++)
-  {
-    if (userInput.toUpperCase() == lettersArray[g].toUpperCase())
-      {
-        Display[g] = userInput.toUpperCase();
-
-        function remove(array, element) {
-            const index = array.indexOf(element);
-
-            if (index !== -1) {
-                array.splice(index, 1);
-            }
-        }
-        remove(lettersWinArray,lettersArray[g]);
-        Win = lettersWinArray.length;
-
-
-      }
-        Output = Output + Display[g];
-  }
-
-  document.getElementById("game").innerHTML = Output;
-  Output="";
-
-
-
-// Used to display letters used
-  for (var w = 0; w < lettersIncorrect.length; w++)
-  {
-    if (userInput.toUpperCase() == lettersIncorrect[w].toUpperCase())
-    {
-      Chances --;
-      document.getElementById("chancesremaining").innerHTML = Chances;
-
-      var node = document.createElement("text");
-      var textnode = document.createTextNode((lettersIncorrect[w].toUpperCase()) + " ");
-      node.appendChild(textnode);
-      document.getElementById("myList").appendChild(node);
-
-      function remove(array, element) {
-          const index = array.indexOf(element);
-
-          if (index !== -1) {
-              array.splice(index, 1);
-          }
-      }
-      remove(lettersIncorrect,lettersIncorrect[w]);
-
-    }
-  }
-  if (Win == 0)
-  {
-    var myImage = document.getElementById('mainImage');
-    myImage.setAttribute("src",WrestlersImg[RandomWrestler])
-  }
-
-};
-
-
-
-
-
-
-
-// reload document - for javascript
-
-
-
-
-
-    </script>
   </body>
+  <footer>
+    <!-- Linking Javascript -->
+    <script src="assets/javascript/game.js"></script>
+  </footer>
 </html>
