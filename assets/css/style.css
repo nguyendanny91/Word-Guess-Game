@@ -1,0 +1,26 @@
+/* Background Image */
+
+body {
+    background-color: black;
+}
+
+.rightbox {
+    color: white;
+    font-size: 200%;
+    border: 1px solid white;
+}
+
+.leftbox {
+    color: white;
+    font-size: 200%;
+    border: 1px solid white;
+}
+
+img {
+  margin: auto;
+  display: block;
+}
+
+.bottom-buffer {
+   padding-bottom: 100px;
+}
